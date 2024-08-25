@@ -3,7 +3,8 @@
   Liked Posts&nbsp;&nbsp;<i class="fa-solid fa-heart"></i></h1>
 <div id="likedposts" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
   <% if (likedPosts.length > 0) { %>
-    <% for(likepost of likedPosts){ %>
+    <% for(let likepost of likedPosts){ %>
+      <% if (likepost.post) { %> <!-- Check if likepost.post is not null -->
       <a href="/posts/<%= likepost.post.id %>" class="post-link">
       <div class="post card col index post-card">
         <img src="<%=likepost.post.image.url%>" class="card-img-bottom" alt="posts image" style="height:20rem;">
@@ -13,6 +14,10 @@
       </div>
       </div>
     </a>
+    <% } else { %>
+      <!-- Handle the case where likepost.post is null -->
+      <div class="alert alert-warning">This post is no longer available.</div>
+      <% } %>
     <% } %>
   <% } else { %>
     <p>You have not liked any posts yet.</p>
