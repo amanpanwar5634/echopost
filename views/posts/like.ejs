@@ -4,7 +4,7 @@
 <div id="likedposts" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
   <% if (likedPosts.length > 0) { %>
     <% for(likepost of likedPosts){ %>
-      <a href="/posts/<%= likepost.post._id %>" class="post-link">
+      <a href="/posts/<%= likepost.post.id %>" class="post-link">
       <div class="post card col index post-card">
         <img src="<%=likepost.post.image.url%>" class="card-img-bottom" alt="posts image" style="height:20rem;">
         <div class="card-body mt-2">
