@@ -1,0 +1,46 @@
+ <% layout("/layouts/boilerplate") %>
+
+    <div id="filters">
+      <div class="heading">
+        <h1>
+          <span class="first-letter">E</span><span class="other-letters">cho</span>
+          <span class="first-letter">P</span><span class="other-letters">ost</span>
+      </h1>
+    </div> 
+      <div class="filter">
+        <div><a href="/likedposts"><i class="fa-solid fa-heart-circle-check"></i></a></div>
+        <p>Liked Posts</p>
+      </div>
+      <div class="filter">
+        <div><a href="/userposts"><i class="fa-solid fa-users-rectangle"></i></a></div>
+        <p>Your Posts</p>
+      </div>
+      <div class="filter">
+        <div><a href="/usercomments"><i class="fa-solid fa-comments"></i></a></div>
+        <p>Your Comments</p>
+      </div>
+      <div class="filter">
+        <div><a href="/mostliked"><i class="fa-solid fa-fire"></i></a></div>
+        <p>Trending Posts</p>
+      </div>
+    </div>
+    
+  
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for (post of allPosts ){%>
+        <a href="/posts/<%=post.id%>" class="post-link">
+    <div class="card col index post-card" >
+        <img src="<%=post.image.url%>" class="card-img-bottom" alt="posts image" style="height:20rem;">
+        <div class="card-body mt-2">
+          <h5 class="card-title"><%=post.title%></h5>
+          <p class="card-text"><%=post.created_at.toString().split(" ").slice(0,4).join(" ")%> </p>
+           
+        </div>
+      </div>
+    </a>
+      <%}%>
+    </div>
+     <hr>
+    <br>
+
+ 

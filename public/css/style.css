@@ -1,0 +1,191 @@
+body{
+ display:flex;
+ flex-direction: column;
+ min-height: 100vh;
+   
+}
+.container{
+  flex:1;
+}
+/*navbar*/
+.navbar{
+  height:5rem;
+  background-color: aliceblue;
+}
+.fa-brands{
+  font-size: 3rem;
+  color:#002840;
+}
+.nav-link{
+  font-weight:bolder;
+  font-size: 1.5rem !important;
+  background-color: aliceblue !important;
+
+}
+/*footer*/
+.f-info-links a{
+  text-decoration: none;
+  color:black;
+}
+.f-info-links a:hover{
+  text-decoration:underline;
+}
+.f-info-links,.f-info-socials{width:100%;}
+
+.f-info-socials i{margin-left:1rem;
+font-size: 1.5rem;}
+.f-info{
+  text-align: center;
+  height:8rem;
+  background-color:#ebebeb;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items: space-evenly;
+}
+/*index*/
+.card-img-bottom{
+  border-top-left-radius:2rem !important;
+  border-top-right-radius:2rem !important;
+  width:100% !important;
+ 
+  object-fit:cover !important;
+}
+.index{
+  border:none !important;
+  margin-bottom: 2rem;
+  box-shadow: 10px 10px 20px black;
+  border-radius: 2rem !important;
+  
+    transition: transform 0.2s ease; /* Smooth transition */
+
+}
+.card-body{
+  padding:0 0 0 1rem !important;
+  
+}
+.post-link{
+  text-decoration: none;
+}
+
+
+.index:hover{
+  transform: scale(0.95); /* Zoom the image to 110% of its original size */
+}
+/*show */
+.card h1{
+  text-align:center;
+}
+.show-img{
+  height:50vh;
+}
+.head{
+  border:none !important;
+}
+.post-card{
+  border-radius: 2rem !important;
+  border:none !important;
+}
+.btns{
+  display:flex;
+}
+.card h1{
+  color:#800020; }
+
+ @media(width<600px){
+  .show-img{
+    height:30vh;
+  }
+  svg{
+    height:5rem;
+  }
+  .alert{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .danger h1{
+    left:0;
+    
+  }
+  .posted{
+    text-align: center;
+  }
+ }
+ .posted{
+text-align:right;
+ }
+.fa-trash{
+  transition: transform 0.2s ease; /* Smooth transition */
+}
+.fa-trash:hover{
+transform: scale(0.95); /* Zoom the image to 110% of its original size */
+}
+/* filters style*/
+#filters{
+  display:flex;
+  flex-wrap:wrap;
+  margin-bottom:1rem;
+}
+.filter{
+  margin-right:2rem;
+  text-align: center;
+  margin-top:1rem;
+  margin-left:2rem;
+  cursor:pointer;
+  opacity:0.7;
+  margin-top: 4rem;
+}
+.filter:hover{
+  opacity:1;
+}
+.filter div i{
+  font-size:1.8rem;
+}
+
+.first-letter {
+  color: #0d5c87; /* Desired color for the first letter */
+  font-size: 8rem; /* Size for the first letter, if you want to keep it smaller */
+  font-weight:bolder;
+}
+.heading{
+  margin-right: 4rem;
+}
+.other-letters {
+  font-size: 4rem; /* Increase size for the other letters */
+  font-weight: bolder;
+}
+.first-letter,
+.other-letters {
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
+}
+#filters h1{
+  display:inline-block;
+  margin-bottom:0;
+}
+ 
+@media screen and (max-width: 1200px) {
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .filter {
+    margin-right: 1rem; /* Adjust margins for smaller screens */
+    margin-left: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .filter div i {
+    font-size: 1.5rem; /* Slightly reduce icon size for smaller screens */
+  }
+
+  .first-letter {
+    font-size: 6rem; /* Adjust size for smaller screens */
+  }
+
+  .other-letters {
+    font-size: 3rem; /* Adjust size for smaller screens */
+  }
+}

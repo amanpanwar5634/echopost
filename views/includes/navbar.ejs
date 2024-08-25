@@ -1,0 +1,49 @@
+<style>
+  .searchbutton i{
+      display:inline;
+   margin-right: 0.7rem;
+  }
+  .searchbutton{
+    background-color: #0d5c87;
+  border-radius:25px;
+  padding:0 1rem 0 1rem;
+  }
+  .searchbutton:hover{
+    background-color: aqua;
+  }
+  .searchbutton{
+    color:black;
+    font-weight:bolder;
+  }
+  .searchinput{
+    padding:0.5rem 3rem 0.5rem 0.5rem;
+   border-radius:25px;
+  }
+</style>
+<nav class="navbar navbar-expand-sm bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/posts"><i class="fa-brands fa-slideshare"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/posts">All Posts</a>
+          <a class="nav-link" href="/posts/new">Create post</a> 
+        </div>
+        <form class="d-flex ms-auto" role="search" action="/search">
+          <input class="form-control me-2 searchinput" type="search" name="searchname" placeholder="Enter the username" aria-label="Search" maxlength="80">
+          <button class="btn btn-outline-success  searchbutton" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+        <div class="navbar-nav ms-auto">
+          <% if(!currUser){%>
+          <a class="nav-link" href="/signup">Signup</a>
+          <a class="nav-link" href="/login">Login</a>
+          <%}%>
+          <%if(currUser){%>
+          <a class="nav-link" href="/logout">Logout</a> 
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </nav>

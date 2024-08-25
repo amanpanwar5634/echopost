@@ -1,0 +1,21 @@
+<% layout("/layouts/boilerplate") %>
+<h1 style="text-align: center;margin-bottom:3rem;color:rgb(165, 197, 197);;font-size:5rem;text-shadow: 5px 5px 10px black;">
+  Your Posts&nbsp;&nbsp;<i class="fa-solid fa-users-rectangle"></i></h1>
+<div id="likedposts" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+  <% if (posts.length > 0) { %>
+    <% for(post of posts){ %>
+      <a href="/posts/<%=post._id %>" class="post-link">
+      <div class="post card col index post-card">
+        <img src="<%=post.image.url%>" class="card-img-bottom" alt="posts image" style="height:20rem;">
+        <div class="card-body mt-2">
+        <h5 class="card-title"><%=post.title%></h5>
+        <p class="card-text"><%=post.created_at.toString().split(" ").slice(0,4).join(" ")%> </p>
+      </div>
+      </div>
+    </a>
+    <% } %>
+  <% } else { %>
+    <p>You have not liked any posts yet.</p>
+  <% } %>
+</div>
+ 

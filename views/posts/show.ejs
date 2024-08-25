@@ -1,0 +1,96 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+<div class="row">
+    <div class="card col-8 head offset-2 mt-3">
+        <h1><%=post.title%></h1>
+    </div>
+<div class="card col-6 offset-3 mt-3 post-card">
+    <img src="<%=post.image.url%>" class="card-img-bottom show-img" alt="Post image">
+    <div class="card-body mt-3">
+      <h5><i class="fa-solid fa-heart" id="like" data-id="<%= post._id %>" ></i>&nbsp;liked by:<span class="like-count"><%= likeCount %></span></h5>
+    <h5 class="card-title posted mb-3"><i>posted by:</i><span style="text-decoration: underline;color:rgb(123, 19, 6)"><%=post.owner.username%></span></h5>
+    <h3 class="card-title mt-2 "><i><%=post.caption%></i></h3>
+    <h5 class="card-title mt-3"><i class="fa-solid fa-location-dot"></i>&nbsp;<%=post.location%></h5>
+    <h5 class="card-title mt-3"><i class="fa-solid fa-globe"></i> &nbsp;<%=post.country%></h5>
+      
+         <!--idea: you can create button "more post the autor" and create a path to see its post-->
+         <!--idea:you can create a home nav item on which you can see your posts-->
+         <!--idea :by using middleware on search bar and apply condition .. in vedio 6 of middleware-->
+         <!--ides:by using relation you can add options in navabar like your posts,your liked posts,your comments-->
+         <!--idea:on click comment owner you go to that user posts page-->
+    </div> 
+  </div>
+  
+  <div class="btns mt-3">
+    
+    <a href="/posts/<%=post._id%>/edit" class="btn btn-dark  offset-3 edit-btn"> edit</a><br> 
+    <form id="deleteForm" method="post" action="/posts/<%=post._id%>?_method=DELETE">
+       <button id="deleteButton" class="btn btn-dark offset-5">DELETE</button>
+   </form>
+   </div>
+   
+   <div class="col-8 offset-3 mt-3 mb-3">
+    <%if(currUser){%>
+    <hr>
+    <form method="post" action="/posts/<%=post.id%>/comments" novalidate class="needs-validation">
+    <label for="comment" class="form-label"><h1>Add Comment</h1></label>
+     <textarea for="comment" name="comment[comment]" id="comment" cols="30" row="20" class="form-control" required></textarea>
+     <div class="invalid-feedback">fill the comment box</div>
+     <button class="btn btn-dark mt-3">Add</button>
+    </form>
+    <%}%>
+    <hr>
+    <h1>All Comments</h1>
+    <div class="row">
+    <% for(comment of post.comments ){%>
+        <div class="card col-5 ms-3 mb-3">
+           <div class="card-body ">
+            <h3 class="card-text"style="text-align:center;color:rgb(123, 19, 6)"><%=comment.author.username%></h3><hr>
+            <h5 class="card-text"><%=comment.comment%></h5>
+           <p class="card-text"style="font-size:0.7rem;"><i><%=comment.commented_at.toString().split(" ").slice(0,4).join(" ")%></i></p>
+         <form method="post" action="/posts/<%=post.id%>/comments/<%=comment._id%>?_method=DELETE">
+            <button class="btn" style="border:none;position:relative;background-color:white;bottom:0px;"><i style="font-size: 2rem;" class="fa-solid fa-trash"></i></button>
+         </form>
+        </div>
+        </div>
+    <%}%>
+</div>
+   </div>
+     </div>
+     
+    <script>
+       document.getElementById('deleteButton').addEventListener("click",(event)=>{
+        event.preventDefault();
+        const confirmed=confirm("Are you sure you want to delete this post?");
+        if(confirmed){
+            document.getElementById("deleteForm").submit();
+        }
+       })
+       // Example using fetch
+       document.getElementById('like').addEventListener('click', async (event) => {
+    const likeIcon = event.target;
+    const postId = likeIcon.dataset.id;
+        const response = await fetch(`/posts/${postId}/like`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include' // Include credentials if you are using cookies for authentication
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            likeIcon.style.color = "red"; // Optionally change the icon color to indicate it's liked
+            document.querySelector('.like-count').textContent = result.likeCount; // Update the like count
+            alert(result.message);
+        } else {
+            const error = await response.json();
+            console.log(err);
+        }
+    }  );
+
+
+    </script>
+    </body>
+    
+ 

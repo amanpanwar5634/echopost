@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") %>
+ 
+    <div class="row">
+        <div class="col-8 offset-2">
+    <h1>Edit Post</h1>
+    <form method="post" class="needs-validation" novalidate action="/posts/<%=post.id%>?_method=PUT" enctype="multipart/form-data">
+        <div class="mb-3">
+        <label for="title" class="form-level">Title</label>
+        <input placeholder="enter the title" id="title" name="post[title]" class="form-control" value=<%=post.title%> required>
+        <div class="invalid-feedback">please fill title</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="caption" class="form-level">Caption</label>
+        <input placeholder="enter the caption" id="caption" name="post[caption]" value=<%=post.caption%> class="form-control" required> 
+        <div class="invalid-feedback">please fill caption</div>
+    </div>
+     
+    <div class="mb-3">
+        <label for="location" class="form-level">Location</label>
+        <input placeholder="enter the location" id="location" name="post[location]" value=<%=post.location%> class="form-control" required> 
+        <div class="invalid-feedback"> Enter location</div>
+    </div>
+     
+    <div class="mb-3">
+        <label for="country" class="form-level">Country</label>
+        <input placeholder="enter the country" id="country" name="post[country]" value=<%=post.country%> class="form-control" required> 
+        <div class="invalid-feedback">Enter country</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="image" class="form-level">Enter post image</label>
+        <input type="file" id="image" name="post[image]" class="form-control" required><br> 
+        <button class="btn btn-dark">submit</button>
+    </form>
+</div>
+</div>
+
+
+ 
