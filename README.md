@@ -54,3 +54,5 @@ Database: MongoDB with Mongoose
 Authentication: Passport.js, bcrypt for password hashing
 Hosting: Render for deployment
 Templating: EJS for server-side rendering
+
+[Visit EchoPosts Live Site](https://echopost-ckyq.onrender.com/posts)
